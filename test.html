@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Select Input Example</title>
+<!-- Link Bootstrap CSS -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+  <div class="form-group">
+    <label for="paymentMethod">Select Payment Method:</label>
+    <select class="form-control" id="paymentMethod" onchange="showLoanOptions()">
+      <option value="cash">Cash</option>
+      <option value="loan">Loan</option>
+    </select>
+  </div>
+  <div id="loanOptions">
+    <!-- Additional options for loan -->
+    <div class="form-group">
+      <label for="loanType">Loan Type:</label>
+      <select class="form-control" id="loanType">
+        <option value="personal">Personal Loan</option>
+        <option value="car">Car Loan</option>
+        <option value="home">Home Loan</option>
+      </select>
+    </div>
+    <!-- Add more loan options as needed -->
+  </div>
+</div>
+
+<!-- Link Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+  // Hide the loanOptions div initially
+  document.getElementById("loanOptions").style.display = "none";
+
+  function showLoanOptions() {
+    var paymentMethod = document.getElementById("paymentMethod").value;
+    var loanOptionsDiv = document.getElementById("loanOptions");
+    if (paymentMethod === "loan") {
+      loanOptionsDiv.style.display = "block";
+    } else {
+      loanOptionsDiv.style.display = "none";
+    }
+  }
+</script>
+</body>
+</html>
