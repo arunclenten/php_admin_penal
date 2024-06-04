@@ -4,7 +4,8 @@
 
 session_start();
 
-if(!isset($_SESSION['admin_name'])){
+// Redirect to login page if user is not logged in
+if(!isset($_SESSION['user_id'])){
    header('location:login.php');
    exit(); // Stop execution if not logged in
 }
@@ -20,13 +21,11 @@ if(isset($_SESSION['user_id'])) {
    if(mysqli_num_rows($result) == 1) {
       $user_data = mysqli_fetch_assoc($result);
 
-      $email = $user_data['email'];
+	  $name = $user_data['name'];
       $user_type = $user_data['user_type'];
    } else {
       // Redirect or handle error if user data not found
    }
-} else {
-   // Redirect or handle error if user ID is not set in the session
 }
 
 ?>
@@ -55,6 +54,7 @@ if(isset($_SESSION['user_id'])) {
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
 	<link href="assets/css/app.css" rel="stylesheet">
 	<link href="assets/css/icons.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 	<!-- Theme Style CSS -->
 	<link rel="stylesheet" href="assets/css/dark-theme.css" />
 	<link rel="stylesheet" href="assets/css/semi-dark.css" />
@@ -243,11 +243,18 @@ if(isset($_SESSION['user_id'])) {
 						<a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 							<img src="assets/images/avatars/avatar-8.png" class="user-img" alt="user avatar">
 							<div class="user-info">
-								<p class="user-name mb-0"><?php echo $_SESSION['admin_name'] ?></p>
-								<p class="designattion mb-0">
-								<?php echo isset($user_type) ? $user_type : "User type not found"; ?>
-
-							</p>
+							<?php
+							 if(isset($name) && isset($user_type)) {
+							
+							 echo "<p class='user-name mb-0'> $name</p>";
+								
+								echo "<p class='designattion mb-0'> $user_type</p>";
+							} else {
+								echo "User details not available.";
+							}
+						
+								?>
+							
 							</div>
 						</a>
 						<ul class="dropdown-menu dropdown-menu-end">

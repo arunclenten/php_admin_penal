@@ -36,38 +36,46 @@ if(isset($_POST['submit'])){
 }
 ?>
 
+
+
+
+
+
 <!DOCTYPE html>
-<html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>login form</title>
-
-   <!-- custom css file link  -->
-   <link rel="stylesheet" href="css/style.css">
-
-</head>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Registration </title> 
+    <link rel="stylesheet" href="./assets/css/register.css">
+   </head>
 <body>
-   
-<div class="form-container">
-
-   <form action="" method="post">
-      <h3>login now</h3>
-      <?php
+  <div class="wrapper">
+    <h2>login</h2>
+    <form action="" method="post">
+    <?php
       if(isset($error)){
          foreach($error as $error){
             echo '<span class="error-msg">'.$error.'</span>';
          };
       };
       ?>
-      <input type="email" name="email" required placeholder="enter your email">
-      <input type="password" name="password" required placeholder="enter your password">
-      <input type="submit" name="submit" value="login now" class="form-btn">
-      <p>don't have an account? <a href="register.php">register now</a></p>
-   </form>
-
-</div>
-
+      <div class="input-box">
+        <input type="text" placeholder="Enter your email" name="email" required>
+      </div>
+      <div class="input-box">
+        <input type="password" placeholder="Create password" name="password" required>
+      </div>
+      <div class="input-box button">
+      <input type="submit" name="submit" value="Login" class="form-btn">
+      </div>
+      <div class="text">
+            <h3><a href="forgotpassword.php">Forgot password?</a></h3>
+         </div>
+      <div class="text">
+        <h3>You don't have an account? <a href="register.php">register now</a></h3>
+      </div>
+    </form>
+  </div>
 </body>
 </html>

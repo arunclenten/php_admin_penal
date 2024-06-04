@@ -3698,24 +3698,6 @@ form select.error:focus {
 
 
 
-.btn i {
-
-	vertical-align: middle;
-
-	font-size: 1.3rem;
-
-	margin-top: -1em;
-
-	margin-bottom: -1em;
-
-	margin-right: 5px
-
-}
-
-
-
-
-
 .btn-inverse-primary {
 
 	color: #008cff;
@@ -5373,4 +5355,7 @@ input::placeholder {
 
 	}
 
+}
+.button{
+	font-size: 12px !important;
 }
